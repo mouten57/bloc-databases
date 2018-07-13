@@ -1,0 +1,102 @@
+Exercises
+
+1. What data types do each of these values represent?
+
+"A Clockwork Orange" -> string
+42 -> integer
+09/02/1945 -> date
+98.7 -> float
+$15.99 -> numeric value (float?)
+
+
+2. Explain when a database would be used. Explain when a text file would be used.
+
+-You will want to use a database when you have multiple users adding new data, retrieving, updating and/or removing data. Databases can be accessed using SQL. 
+-You would use a text file if you are dealing with a single user, one at a time write access or simpler data structures. With a text file, you are required to know how the data is structured in your file in order to modify it at all.
+
+3. Describe one difference between SQL and other programming languages.
+
+-SQL is a declarative rather than a procedural language.
+
+4. In your own words, explain how the pieces of a database system fit together at a high level.
+
+-A database is an application that allows users to manage data through some kind of interface. Databases store data in a specialized language that is not readable by humans. They store data in tables, and within tables, there are rows, columns, and values. They use a special language known as SQL in order to read and modify data.
+
+5. Explain the meaning of table, row, column, and value.
+
+-A table contains rows and columns for the data it contains. In a database for an online business, you might have a Customers table and a Products table.
+
+-A row represents a specific data entry or instance. For example, we may have a users table and each row represents a unique user.
+
+-Each column represents a specific data characteristic. For example, we may have a users table with a column for name, a column for email address, a column for phone number, etc.
+
+-A value represents a specific data attribute for a specific instance or entry. In other words, it's where row meets column. For example, in a users table, we may have an entry for Joe Smith. In the row, 'Joe Smith', 867-5309, and joe@smith.com would all be values in adjacent columns. 
+
+6. List three data types that can be used in a table.
+
+-string, integer, and float.
+
+7. Given this payments table, 
+https://www.db-fiddle.com/f/5gVGFmB8Aq66SejCFEbfdd/0
+provide an English description of the following queries and include their results:
+
+     SELECT date, amount
+     FROM payments;
+
+     Query: "Grab all of the data from the dates and amounts columns in the payments table."
+     Results: 
+        date	      amount
+        2016-05-01	   1500
+        2016-05-10	   37
+        2016-05-15	   124.93
+        2016-05-23	   54.72
+    
+     SELECT amount
+     FROM payments
+     WHERE amount > 500;
+
+     Query: "Grab the amount column from the payments table and inclue data where the amount is over 500."
+     Results:
+        amount  
+        1500
+
+     SELECT *
+     FROM payments
+     WHERE payee = 'Mega Foods';
+
+    Query: "Select every column from payments table and include only data where payee is 'Mega Foods'"
+    Results:
+        date        payee       amount      memo
+        2016/05/15  Mega Foods  124.93      Groceries
+
+8. Given this users table, 
+https://www.db-fiddle.com/f/iQAEYktwysXqcLQHv2dwbc/0
+write SQL queries using the following criteria and include the output:
+
+1. The email and sign-up date for the user named DeAndre Data.
+
+SELECT email, signup
+FROM users
+WHERE name = 'DeAndre Data';
+
+email	            signup
+datad@comcast.net	2008-01-20
+
+2. The user ID for the user with email 'aleesia.algorithm@uw.edu'.
+
+SELECT userid
+FROM users
+WHERE email = 'aleesia.algorithm@uw.edu';
+
+userid
+1
+
+3. All the columns for the user ID equal to 4.
+
+SELECT *
+FROM users
+WHERE userid = 4;
+
+userid	    name	          email	            signup
+4	     Brandy Boolean	  bboolean@nasa.gov	  1999-10-15
+
