@@ -1,0 +1,96 @@
+1. Write out a generic SELECT statement.
+
+SELECT age FROM people WHERE name LIKE 'M%';
+
+2. Create a fun way to remember the order of operations in a SELECT statement, such as a mnemonic.
+
+Sally's (SELECT)
+Fat     (FROM)
+Wallet  (WHERE)
+
+3. Given this dogs table, write queries to select the following pieces of data:
+Intake teams typically guess the breed of shelter dogs, so the breed column may have multiple words (for example, "Labrador Collie mix").
+    * Display the name, gender, and age of all dogs that are part Labrador.
+
+    -SELECT name,gender,age FROM dogs WHERE breed LIKE '%labrador%'
+
+    * Display the ids of all dogs that are under 1 year old.
+
+    -SELECT id FROM dogs WHERE age < 1;
+
+    * Display the name and age of all dogs that are female and over 35lbs.
+
+    -SELECT name,age FROM dogs WHERE gender='F' AND weight>30;
+
+    * Display all of the information about all dogs that are not Shepherd mixes.
+
+    -SELECT * FROM dogs WHERE breed NOT LIKE '%shepherd%';
+
+    * Display the id, age, weight, and breed of all dogs that are either over 60lbs or Great Danes.
+
+    -SELECT id,age,weight,breed FROM dogs WHERE breed='great dane' OR weight>60;
+
+4. Given this cats table, what records are returned from these queries?
+    * SELECT name, adoption_date FROM cats;
+    name	    adoption_date
+    Mushi	2016-03-22T00:00:00.000Z
+    Seashell	    null
+    Azul	2016-04-17T00:00:00.000Z
+    Victoire	2016-09-01T00:00:00.000Z
+    Nala	        null
+
+    * SELECT name, age FROM cats;
+        name	    age
+        Mushi	    1
+        Seashell	7
+        Azul	    3
+        Victoire	7
+        Nala	    1
+
+5. From the cats table, write queries to select the following pieces of data.
+    * Display all the information about all of the available cats.
+
+    -SELECT * FROM cats WHERE adoption_date IS NULL;
+
+    * Choose one cat of each age to show to potential adopters.
+
+    SELECT * FROM cats WHERE id>2;
+
+    * Find all of the names of the cats, so you don’t choose duplicate names for new cats.
+
+    SELECT name from cats;
+
+6. List each comparison operator and explain when you would use it. Include a real world example for each.
+    * If you can’t list these from memory, do these flashcards until you can!
+
+> Greater than. If age is > 21, you can legally drink!
+< Less than. If age is < 16 in Texas, you can't get a license.
+= Equals. If age = 25 you can rent a car.
+>= Greater than or equal to. As long as my bank account is >= 0, I won't get fined for overdrawing the account!
+<= Less than or equal to. All numbers <=0 are good scores in golf.
+!=/<> Does not equal. My age does not equal 25.
+LIKE -contains part of search in name. breed LIKE '%cat%' would return tom cat, bob cat, house cat.
+AND adds a conditional.returns if both parts are true. breed LIKE '%cat%' AND age > 5;
+OR adds a conditional. Returns if one or the other is true. breed LIKE '%cat%' OR adoption_date IS NULL;
+NOT returns everything else besides what you put in. NOT LIKE '%cat%' would return any animal without the word 'cat' in it's breed type.
+
+7. From the cats table, what data is returned from these queries?
+    * SELECT name FROM cats WHERE gender = ‘F’;
+
+    name
+    Seashell
+    Nala
+
+    * SELECT name FROM cats WHERE age <> 3;
+
+    name
+    Mushi
+    Seashell
+    Victoire
+    Nala
+
+    * SELECT ID FROM cats WHERE name != ‘Mushi’ AND gender = ‘M’;
+
+    id
+    3
+    4
